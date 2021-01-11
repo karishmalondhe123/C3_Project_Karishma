@@ -69,4 +69,22 @@ public class Restaurant {
         return name;
     }
 
+    public int getItemsOrderValue(List<String> items) {
+        List<String> menuItems = new ArrayList<String>();
+        List<Integer> price = new ArrayList<Integer>();
+
+        int orderTotal = 0;
+
+        for (Item item: menu) {
+
+            menuItems.add(item.getName());
+            price.add((Integer)item.getPrice());
+        }
+        for (String item: items) {
+            if (menuItems.contains(item))
+                orderTotal += price.get(menuItems.indexOf(item));
+        }
+        return orderTotal;
+    }
+
 }
